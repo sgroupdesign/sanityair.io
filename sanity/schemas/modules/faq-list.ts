@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscQuestion } from 'react-icons/vsc'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { getBlockText } from '../../src/utils'
 
 export default defineType({
@@ -9,9 +9,28 @@ export default defineType({
 	icon: VscQuestion,
 	fields: [
 		defineField({
+			name: 'backgroundColour',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'White', value: 'bg-white' },
+					{ title: 'Light Grey', value: 'bg-slate-50' },
+					{ title: 'Black', value: 'bg-black' },
+				],
+			},
+			initialValue: 'bg-white',
+		}),
+		defineField({
 			name: 'content',
 			type: 'array',
 			of: [{ type: 'block' }],
+		}),
+		defineField({
+			name: 'centerAligned',
+			type: 'boolean',
+			description:
+				'By default the content field is left aligned, enable this for center alignment if required.',
+			initialValue: false,
 		}),
 		defineField({
 			name: 'items',

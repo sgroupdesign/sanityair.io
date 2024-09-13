@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity'
 import { VscInspect } from 'react-icons/vsc'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'cta',
@@ -16,8 +16,8 @@ export default defineType({
 			type: 'string',
 			options: {
 				list: [
-					{ title: 'action', value: 'action' },
-					{ title: 'link', value: 'link' },
+					{ title: 'Button', value: 'btn' },
+					{ title: 'Link', value: 'link' },
 				],
 			},
 		}),

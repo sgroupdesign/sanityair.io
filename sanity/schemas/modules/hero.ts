@@ -1,6 +1,5 @@
-import { defineField, defineType } from 'sanity'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { getBlockText } from '../../src/utils'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'hero',
@@ -23,9 +22,14 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'title',
+			type: 'string',
+			group: 'content',
+		}),
+		defineField({
 			name: 'content',
-			type: 'array',
-			of: [{ type: 'block' }],
+			type: 'string',
+			rows: '3',
 			group: 'content',
 		}),
 		defineField({
@@ -40,7 +44,7 @@ export default defineType({
 			type: 'string',
 			options: {
 				layout: 'radio',
-				list: ['left', 'center', 'right'],
+				list: ['left', 'center'],
 			},
 			initialValue: 'center',
 			group: 'options',
@@ -97,14 +101,29 @@ export default defineType({
 			fieldset: 'image',
 			group: 'image',
 		}),
+		defineField({
+			name: 'bgOverlayOpacity',
+			type: 'string',
+			options: {
+				list: [
+					{ title: '20%', value: '20' },
+					{ title: '40%', value: '40' },
+					{ title: '60%', value: '60' },
+					{ title: '80%', value: '80' },
+					{ title: '100%', value: '100' },
+				],
+			},
+			fieldset: 'image',
+			group: 'image',
+		}),
 	],
 	preview: {
 		select: {
-			content: 'content',
+			title: 'title',
 			media: 'bgImage',
 		},
-		prepare: ({ content, media }) => ({
-			title: getBlockText(content),
+		prepare: ({ title, media }) => ({
+			title: title,
 			subtitle: 'Hero',
 			media,
 		}),

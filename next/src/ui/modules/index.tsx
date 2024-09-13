@@ -1,7 +1,7 @@
 import BlogRollup from './blog/Rollup'
-import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 import FAQList from './FAQList'
+import Gallery from './Gallery'
 import Hero from './Hero'
 import HeroPostcard from './HeroPostcard'
 import LogoList from './LogoList'
@@ -16,12 +16,12 @@ export default function Modules({ modules }: { modules?: Sanity.Module[] }) {
 				switch (module._type) {
 					case 'blog-rollup':
 						return <BlogRollup {...module} key={module._key} />
-					case 'creative-module':
-						return <CreativeModule {...module} key={module._key} />
 					case 'custom-html':
 						return <CustomHTML {...module} key={module._key} />
 					case 'faq-list':
 						return <FAQList {...module} key={module._key} />
+					case 'gallery':
+						return <Gallery {...module} key={module._key} />
 					case 'hero':
 						return <Hero {...module} key={module._key} />
 					case 'hero.postcard':

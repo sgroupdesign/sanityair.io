@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
 import { GoNumber } from 'react-icons/go'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { count, getBlockText } from '../../src/utils'
 
 export default defineType({
@@ -37,6 +37,25 @@ export default defineType({
 					},
 				}),
 			],
+		}),
+		defineField({
+			name: 'centerAligned',
+			type: 'boolean',
+			description:
+				'By default the content field is left aligned, enable this for center alignment if required.',
+			initialValue: false,
+		}),
+		defineField({
+			name: 'backgroundColour',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'White', value: 'bg-white' },
+					{ title: 'Light Grey', value: 'bg-slate-50' },
+					{ title: 'Black', value: 'bg-black' },
+				],
+			},
+			initialValue: 'bg-white',
 		}),
 	],
 	preview: {

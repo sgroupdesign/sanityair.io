@@ -35,20 +35,20 @@
 	/* typography */
 
 	._h {
-		font-weight: bold;
+		@apply mb-6 font-bold uppercase;
 	}
 
 	.h1 {
-		@apply _h text-3xl;
+		@apply _h text-6xl;
 	}
 	.h2 {
-		@apply _h text-2xl;
+		@apply _h text-4xl;
 	}
 	.h3 {
-		@apply _h text-xl;
+		@apply _h text-3xl;
 	}
 	.h4 {
-		@apply _h text-lg;
+		@apply _h text-xl;
 	}
 	.h5 {
 		@apply _h;
@@ -65,28 +65,18 @@
 
 	/* ctas, links */
 
-	.action {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		padding: 0.5em 1em;
-		color: #fff;
-		@apply rounded bg-gradient-to-br from-ink/70 to-ink shadow;
+	.btn {
+		@apply bg-primary hover:bg-secondary px-6 py-3 text-white transition duration-300 ease-in-out;
 	}
 
 	.link {
-		text-decoration: underline;
-
-		&:hover {
-			text-decoration-thickness: 2px;
-		}
+		@apply border-primary border-spacing-1 border-b transition duration-300 ease-in-out hover:opacity-80;
 	}
 
 	/* layout */
 
 	.section {
-		@apply mx-auto max-w-screen-xl p-8 max-md:px-4 md:py-12;
+		@apply mx-auto max-w-screen-2xl p-8 max-md:px-4 md:py-12;
 	}
 }
 
@@ -169,10 +159,6 @@
 		& :is(ul, ol) {
 			list-style: revert;
 			padding-left: 1.5em;
-		}
-
-		& a:not([class*='action']) {
-			@apply link;
 		}
 	}
 

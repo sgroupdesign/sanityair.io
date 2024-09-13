@@ -1,11 +1,9 @@
-import { VscEdit } from 'react-icons/vsc'
+import { GoFileMedia } from 'react-icons/go'
 import { defineField, defineType } from 'sanity'
-import { getBlockText } from '../../src/utils'
 
 export default defineType({
-	name: 'blog-rollup',
-	title: 'Blog rollup',
-	icon: VscEdit,
+	name: 'gallery',
+	icon: GoFileMedia,
 	type: 'object',
 	groups: [
 		{ name: 'content', title: 'Content', default: true },
@@ -19,10 +17,9 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'ctas',
-			title: 'Call-to-actions',
+			name: 'images',
 			type: 'array',
-			of: [{ type: 'cta' }],
+			of: [{ type: 'image' }],
 			group: 'content',
 		}),
 		defineField({
@@ -34,19 +31,28 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
-			name: 'layout',
+			name: 'backgroundColour',
 			type: 'string',
 			options: {
-				list: ['grid', 'carousel'],
-				layout: 'radio',
+				list: [
+					{ title: 'White', value: 'bg-white' },
+					{ title: 'Light Grey', value: 'bg-slate-50' },
+					{ title: 'Black', value: 'black' },
+				],
 			},
-			initialValue: 'carousel',
+			initialValue: 'bg-white',
 			group: 'options',
 		}),
 		defineField({
-			name: 'limit',
-			type: 'number',
-			validation: (Rule) => Rule.min(1).integer(),
+			name: 'layout',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'Carousel', value: 'carousel' },
+					{ title: 'Gallery', value: 'gallery' },
+				],
+			},
+			initialValue: 'bcarousel',
 			group: 'options',
 		}),
 		defineField({
@@ -56,14 +62,32 @@ export default defineType({
 			initialValue: false,
 			group: 'options',
 		}),
+		defineField({
+			name: 'aspectRatio',
+			type: 'string',
+			options: {
+				list: [
+					{ title: '16x9', value: 'aspect-video' },
+					{ title: '1x1', value: 'aspect-square' },
+					{ title: '4x3', value: 'aspect-4x3' },
+				],
+			},
+			initialValue: '16x9',
+			group: 'options',
+		}),
+		defineField({
+			name: 'columns',
+			type: 'number',
+			initialValue: 3,
+			group: 'options',
+		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
 		},
 		prepare: ({ content }) => ({
-			title: getBlockText(content),
-			subtitle: 'Blog rollup',
+			title: 'Gallery',
 		}),
 	},
 })

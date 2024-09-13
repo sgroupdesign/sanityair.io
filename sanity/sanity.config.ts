@@ -1,8 +1,9 @@
 import { defineConfig } from 'sanity'
-import { projectId } from './src/env'
 import { structureTool } from 'sanity/structure'
 import defaultDocumentNode from './src/defaultDocumentNode'
+import { projectId } from './src/env'
 import structure from './src/structure'
+
 import {
 	dashboardTool,
 	projectInfoWidget,

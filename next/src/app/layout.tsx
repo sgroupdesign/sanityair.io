@@ -1,5 +1,5 @@
-import Header from '@/ui/header'
 import Footer from '@/ui/footer'
+import Header from '@/ui/header'
 // import { GoogleTagManager } from '@next/third-parties/google'
 import '@/styles/app.css'
 
@@ -12,7 +12,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className="bg-canvas text-ink">
 				<Header />
-				<main id="main-content" tabIndex={-1}>
+				<main id="main-content" className="" tabIndex={-1}>
 					{children}
 				</main>
 				<Footer />

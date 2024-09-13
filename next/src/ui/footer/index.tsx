@@ -1,18 +1,18 @@
 import { getSite } from '@/lib/sanity'
-import Navigation from './Navigation'
 import Social from '@/ui/Social'
+import Navigation from './Navigation'
 
 export default async function Footer() {
-	const { title } = await getSite()
+	const { companyName } = await getSite()
 
 	return (
 		<section className="bg-ink text-center text-canvas">
 			<div className="section py-8">
-				<div className="mx-auto max-w-screen-xl space-y-8">
+				<div className="max-w-screen-2xl space-y-8">
 					<Navigation />
 					<Social className="justify-center" />
 					<p className="text-sm">
-						&copy; {new Date().getFullYear()} {title}
+						&copy; {companyName} {new Date().getFullYear()}
 					</p>
 				</div>
 			</div>

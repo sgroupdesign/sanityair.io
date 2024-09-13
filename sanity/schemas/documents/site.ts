@@ -9,14 +9,25 @@ export default defineType({
 	],
 	fields: [
 		defineField({
-			name: 'title',
+			name: 'companyName',
 			type: 'string',
+		}),
+		defineField({
+			name: 'logo',
+			description: '',
+			type: 'image',
+		}),
+		defineField({
+			name: 'footerLogo',
+			description: '',
+			type: 'image',
 		}),
 		defineField({
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
+			validation: (Rule) => Rule.max(2),
 		}),
 		defineField({
 			name: 'headerMenu',

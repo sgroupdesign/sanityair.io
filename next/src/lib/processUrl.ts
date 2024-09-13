@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://next-sanity-template-demo.vercel.app'
+export const BASE_URL = 'http://localhost:3000'
 
 export default function (
 	page: Sanity.PageBase,

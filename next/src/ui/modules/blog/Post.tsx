@@ -1,10 +1,9 @@
 import Date from '@/ui/Date'
-import Categories from './Categories'
-import ReadTime from './ReadTime'
-import { PortableText } from '@portabletext/react'
-import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import AnchoredHeading from '@/ui/modules/RichtextModule/AnchoredHeading'
 import Image from '@/ui/modules/RichtextModule/Image'
+import { PortableText } from '@portabletext/react'
+import Categories from './Categories'
+import ReadTime from './ReadTime'
 
 export default function Post({ post }: { post: Sanity.BlogPost }) {
 	return (
@@ -19,10 +18,6 @@ export default function Post({ post }: { post: Sanity.BlogPost }) {
 			</header>
 
 			<div className="section grid gap-8 md:grid-cols-[1fr,auto]">
-				<aside className="md:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] md:order-1 md:w-[250px]">
-					<TableOfContents headings={post.headings} />
-				</aside>
-
 				<div className="richtext mx-auto max-w-screen-sm [&>:not(:first-of-type)]:!mt-[1em]">
 					<PortableText
 						value={post.body}

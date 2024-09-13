@@ -1,10 +1,10 @@
 'use client'
 
+import { client } from '@/lib/sanity'
 import {
 	useNextSanityImage,
 	type UseNextSanityImageOptions,
 } from 'next-sanity-image'
-import { client } from '@/lib/sanity'
 import Image, { type ImageProps } from 'next/image'
 
 export default function Img({

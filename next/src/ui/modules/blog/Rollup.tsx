@@ -1,15 +1,17 @@
 import { fetchSanity, groq } from '@/lib/sanity'
+import { cn } from '@/lib/utils'
 import { PortableText } from '@portabletext/react'
 import PostPreview from './PostPreview'
-import { cn } from '@/lib/utils'
 
 export default async function Rollup({
 	content,
 	limit = 100,
 	layout,
+	containerFullWidth,
 }: Partial<{
 	content: any
 	limit?: number
+	containerFullWidth: boolean
 	layout: 'grid' | 'carousel'
 }>) {
 	const posts = await fetchSanity<Sanity.BlogPost[]>(
@@ -24,26 +26,26 @@ export default async function Rollup({
 	)
 
 	return (
-		<section className="section space-y-4">
+		<section
+			className={cn('space-y-8', containerFullWidth ? 'p-6' : 'section')}
+		>
 			<header className="richtext">
 				<PortableText value={content} />
 			</header>
 
-			<ul
+			<div
 				className={cn(
 					'gap-6',
-					layout === 'grid'
-						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
-						: 'carousel max-md:full-bleed [--size:320px] max-md:px-4',
-					posts.length > 3 && 'full-bleed px-4 md:px-8',
+					layout === 'grid' ? 'grid grid-cols-2 lg:grid-cols-3' : 'carousel',
+					posts.length > 3 && '',
 				)}
 			>
 				{posts?.map((post, key) => (
-					<li key={key}>
+					<div key={key}>
 						<PostPreview post={post} />
-					</li>
+					</div>
 				))}
-			</ul>
+			</div>
 		</section>
 	)
 }

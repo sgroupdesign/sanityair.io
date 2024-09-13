@@ -1,8 +1,7 @@
-import Img, { Source } from '@/ui/Img'
-import { PortableText } from '@portabletext/react'
-import CTAList from '@/ui/CTAList'
-import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
+import CTAList from '@/ui/CTAList'
+import Img, { Source } from '@/ui/Img'
+import Pretitle from '@/ui/Pretitle'
 
 export default function Hero({
 	pretitle,
@@ -10,9 +9,11 @@ export default function Hero({
 	ctas,
 	bgImage,
 	bgImageMobile,
+	bgOverlayOpacity,
 	textAlign = 'center',
 	alignItems,
 }: Partial<{
+	title: string
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
@@ -26,25 +27,38 @@ export default function Hero({
 	return (
 		<section
 			className={cn(
-				hasImage && 'grid bg-ink text-canvas *:col-span-full *:row-span-full',
+				hasImage &&
+					'relative grid bg-ink text-canvas *:col-span-full *:row-span-full',
 			)}
 		>
 			{bgImage && (
 				<picture>
 					<Source image={bgImageMobile} />
 					<Img
-						className="max-h-fold size-full object-cover"
+						className="size-full max-h-fold object-cover"
 						image={bgImage}
 						draggable={false}
 					/>
 				</picture>
 			)}
 
+			{bgOverlayOpacity && (
+				<div
+					className={cn('absolute inset-0 bg-black', {
+						'opacity-20': bgOverlayOpacity === '20',
+						'opacity-40': bgOverlayOpacity === '40',
+						'opacity-60': bgOverlayOpacity === '60',
+						'opacity-80': bgOverlayOpacity === '80',
+						'opacity-100': bgOverlayOpacity === '100',
+					})}
+				></div>
+			)}
+
 			{content && (
 				<div className="section flex w-full flex-col">
 					<div
 						className={cn(
-							'richtext relative max-w-xl [&_:is(h1,h2)]:text-balance',
+							'richtext relative max-w-2xl [&_:is(h1,h2)]:text-balance',
 							{
 								'mb-8': alignItems === 'start',
 								'my-auto': alignItems === 'center',
@@ -53,7 +67,6 @@ export default function Hero({
 							{
 								'mr-auto': textAlign === 'left',
 								'mx-auto': textAlign === 'center',
-								'ml-auto': textAlign === 'right',
 							},
 						)}
 						style={{ textAlign }}
@@ -63,13 +76,16 @@ export default function Hero({
 						>
 							{pretitle}
 						</Pretitle>
-						<PortableText value={content} />
+
+						<h2 className="h2">Test</h2>
+
+						<div className="">{content}</div>
+
 						<CTAList
 							ctas={ctas}
 							className={cn({
 								'justify-start': textAlign === 'left',
 								'justify-center': textAlign === 'center',
-								'justify-end': textAlign === 'right',
 							})}
 						/>
 					</div>

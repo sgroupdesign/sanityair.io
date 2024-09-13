@@ -11,21 +11,23 @@ export default function StatList({
 	}[]
 }>) {
 	return (
-		<section className="section">
-			{content && (
-				<header className="richtext text-center">
-					<PortableText value={content} />
-				</header>
-			)}
+		<section className="bg-slate-50">
+			<div className="section max-w-screen-md">
+				{content && (
+					<header className="richtext text-center">
+						<PortableText value={content} />
+					</header>
+				)}
 
-			<dl className="flex items-start justify-center gap-x-12 gap-y-6 max-md:flex-col">
-				{stats?.map((stat, key) => (
-					<div className="w-full max-w-[250px]" key={key}>
-						<dt className="text-6xl font-bold">{stat.value}</dt>
-						<dd className="font-bold">{stat.text}</dd>
-					</div>
-				))}
-			</dl>
+				<dl className="flex items-start justify-center gap-x-12 gap-y-6 max-md:flex-col">
+					{stats?.map((stat, key) => (
+						<div className="w-full max-w-[250px]" key={key}>
+							<dt className="text-6xl font-bold">{stat.value}</dt>
+							<dd className="font-bold">{stat.text}</dd>
+						</div>
+					))}
+				</dl>
+			</div>
 		</section>
 	)
 }

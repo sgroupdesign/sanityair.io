@@ -1,5 +1,5 @@
-import plugin from 'tailwindcss/plugin'
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
 	content: ['./src/{app,ui}/**/*.{ts,tsx}'],
@@ -8,6 +8,9 @@ const config: Config = {
 			colors: {
 				ink: '#000',
 				canvas: '#fff',
+				primary: '#000',
+				secondary: '#ccc',
+				tertiary: '#d7s8d0',
 			},
 			fontFamily: {},
 			maxHeight: {
@@ -20,6 +23,6 @@ const config: Config = {
 			addVariant('header-closed', 'body:has(#header-open:not(:checked)) &')
 		}),
 	],
-	safelist: ['action'],
+	safelist: ['btn'],
 }
 export default config
